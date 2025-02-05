@@ -1,6 +1,6 @@
 #!/bin/bash
 source .env
-
+echo "$DOCKER_PAT" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 
 # Stop if any command fails
@@ -16,7 +16,7 @@ chmod +x build.sh
 ./build.sh
 
 # Log in to Docker Hub securely
-echo "$DOCKER_PAT" | docker login -u nandhini1694 --password-stdin
+echo "$DOCKER_PAT" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 # Tag Docker image with your repository name
 docker tag html-app nandhini1694/myrepo
