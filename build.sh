@@ -1,10 +1,13 @@
 #!/bin/bash
 
+echo "🔨 Starting Build Script..."
+
 # Stop if any command fails
 set -e
 
-# Build Docker image
-echo "🔨 Building Docker Image..."
-docker build -t html-app .
+echo "hi123"
 
-echo "✅ Build Complete!"
+# Build the Docker image
+docker build -t test .
+
+echo "✅ Build Completed!"

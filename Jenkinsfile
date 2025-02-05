@@ -1,24 +1,20 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/itsnandhu2004/TASK-2.git'
-            }
-        }
-        
-        stage('Build Application') {
-            steps {
-                sh 'chmod +x build.sh'
-                sh './build.sh'
-            }
-        }
+    environment {
+        DOCKER_USERNAME = 'nandhini1694'   // Your Docker Hub username
+        DOCKER_IMAGE = 'myrepo'          // Your Docker repository name
+    }
 
-        stage('Deploy Application') {
+    stages {
+        stage('Build and Push Docker Image') {
             steps {
-                sh 'chmod +x deploy.sh'
-                sh './deploy.sh'
+                script {
+                    withCredentials([string(credentialsId: 'DOCKER_PAT', variable: 'DOCKER_PAT')]) {
+                        sh 'chmod +x deploy.sh'
+                        sh './deploy.sh'
+                    }
+                }
             }
         }
     }
