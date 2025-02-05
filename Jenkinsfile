@@ -6,6 +6,7 @@ pipeline {
         DOCKER_IMAGE = 'myrepo'          // Your Docker repository name
     }
 
+
     stages {
         stage('Build and Push Docker Image') {
             steps {
@@ -19,3 +20,4 @@ pipeline {
         }
     }
 }
+
